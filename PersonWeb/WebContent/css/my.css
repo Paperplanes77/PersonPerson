@@ -1,0 +1,47 @@
+@CHARSET "UTF-8";
+
+div{
+	color:orange;
+	font-family:隶书;
+}
+#div3{
+	color:pink;
+	font-family:yellow;
+	font-size:40px;
+}
+.div4{
+	color:#800040;
+	font-family:楷体;
+	font-size:5px;
+}
+table{
+	color:#800040;
+	font-family:宋体;
+	font-size:20px;
+}
+ul{
+	color:#600040;
+	font-family:仿宋;
+	font-size:25px;
+}
+input{
+	background:write;
+	color:green;
+	font-size:40px;
+}
+input[name='psw']{
+	background:write;
+	color:lightblue;
+	font-size:40px;
+}
+input[name='usename']{
+	background:blue;
+	color:yellow;
+	font-size:50px;
+}
+a:HOVER{
+	font-size:80px;
+}
+a:VISITED{
+	font-size:80px;
+}
