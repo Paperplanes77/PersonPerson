@@ -12,12 +12,12 @@
 	<center>
 		<form action="<%=request.getContextPath() %>/servlet/PersonWeb" method="get" >
 				<span>账户名:</span>
-				<input type="text" name="username" size="32" title="输入账户名"/><span  border="1" color="blue" width="30px" height="30px">账户名为数字和英文字母！</span><br/>
+				<input type="text" name="username" size="32" title="输入账户名"/><span>账户名为数字和英文字母！</span><br/>
 				<span>密码名:</span>
 				<input type="password" name="password" size="32" title="输入密码"/><br/>
-				<input type="submit" value="登录提交"/>&nbsp; &nbsp;&nbsp;
-				<input type="reset" value="登录重新"/>
+				<input type="submit" value="登录"/>&nbsp; &nbsp;&nbsp;
+				<input type="reset" value="重新登录"/>
 		</form>
 	</center>
 </body>
-</html>
+</html> 

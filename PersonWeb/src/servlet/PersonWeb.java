@@ -40,7 +40,7 @@ public class PersonWeb extends HttpServlet {
 			/*RequestDispatcher rd=request.getRequestDispatcher("/servlet/MyLoginServletDemo");
 			rd.include(request, response);*/
 			ServletContext context=getServletContext();
-			RequestDispatcher rd=context.getRequestDispatcher("/LoginTest.jsp");
+			RequestDispatcher rd=context.getRequestDispatcher("/login/LoginFailed.jsp");
 			rd.forward(request, response);
 		}
 	}

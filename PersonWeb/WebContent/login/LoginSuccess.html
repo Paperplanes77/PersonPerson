@@ -5,6 +5,28 @@
 <title>Insert title here</title>
 </head>
 <body>
-<p>登录成功<p>
+<div id="mydiv">
+	
+	</div>
+<script type="text/javascript">
+	function flush(){
+	var d=new Date();
+	//alert(d);
+	var ele=document.getElementById("mydiv");
+	var str="";
+	//alert(d.getYear());
+	var year=d.getFullYear();//116
+	var month=d.getMonth()+1;//月要加1
+	var day=d.getDate();//从date对象返回对应那一天
+	var hours=d.getHours();
+	var seconds=d.getSeconds();
+	var minutes=d.getMinutes();
+	str=year+"年"+month+"月"+day+"日"+"   "+hours+":"+minutes+":"+seconds;
+	ele.innerHTML="<font color='red'>"+str+"</font>";
+}
+	//创建一个定时器
+	setInterval(flush,1000);
+</script>
+<p style="color: lightblue; font-family: 华文行楷;font-size: 30px">登录成功<p>
 </body>
 </html>
