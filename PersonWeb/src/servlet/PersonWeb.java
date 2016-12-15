@@ -34,7 +34,7 @@ public class PersonWeb extends HttpServlet {
 		String pwd=request.getParameter("password");
 		if ("zhangsan".equals(name)&&"1234".equals(pwd)) {
 			ServletContext context=getServletContext();
-			RequestDispatcher rd=context.getRequestDispatcher("/servlet/LoginSuccess.html");
+			RequestDispatcher rd=context.getRequestDispatcher("/login/LoginSuccess.html");
 			rd.forward(request, response);
 		}else{
 			/*RequestDispatcher rd=request.getRequestDispatcher("/servlet/MyLoginServletDemo");
