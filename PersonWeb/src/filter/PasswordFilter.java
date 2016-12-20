@@ -47,9 +47,13 @@ public class PasswordFilter implements Filter {
 		// pass the request along the filter chain
 		System.out.println("loginPasswordLost:分离开始!");
 		String password=request.getParameter("password");
+		String name=request.getParameter("username");
 		if (password!=null&&!"".equals(password)||"1234".equals(password)) {
 			chain.doFilter(request, response);
-		}else {
+		}else if ((name==""||name==null)&&(password==null||password=="")) {
+			chain.doFilter(request, response);
+		}
+		else {
 			HttpServletResponse rep=(HttpServletResponse)response;
 			rep.sendRedirect("/PersonWeb/filter/NullPassword.html");
 		}

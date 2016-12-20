@@ -46,7 +46,11 @@ public class UserNameFilter implements Filter {
 
 		// pass the request along the filter chain
 		String name=request.getParameter("username");
+		String password=request.getParameter("password");
+		//将特殊的情况张三  全空处理下
 		if (name!=null&&!"".equals(name)||"张三".equals(name)) {
+			chain.doFilter(request, response);
+		}else if ((name==""||name==null)&&(password==null||password=="")) {
 			chain.doFilter(request, response);
 		}else {
 			HttpServletResponse rep=(HttpServletResponse)response;
