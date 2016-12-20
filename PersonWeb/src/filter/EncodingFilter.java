@@ -9,24 +9,32 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.annotation.WebInitParam;
 
 /**
- * Servlet Filter implementation class UserNameFilter
+ * Servlet Filter implementation class EncodingFilter
  */
-@WebFilter(dispatcherTypes = {
+@WebFilter(
+		dispatcherTypes = {
 				DispatcherType.REQUEST, 
 				DispatcherType.FORWARD, 
 				DispatcherType.INCLUDE, 
 				DispatcherType.ERROR
 		}
-					, urlPatterns = { "/servlet/PersonWeb" })
-public class UserNameFilter implements Filter {
+					, 
+		description = "用于编码方式的改变", 
+		urlPatterns = { "/servlet/PersonWeb" }, 
+		initParams = { 
+				@WebInitParam(name = "charset", value = "UTF-8")
+		})
+public class EncodingFilter implements Filter {
 
-    /**
+    private String charset;
+
+	/**
      * Default constructor. 
      */
-    public UserNameFilter() {
+    public EncodingFilter() {
         // TODO Auto-generated constructor stub
     }
 
@@ -45,13 +53,8 @@ public class UserNameFilter implements Filter {
 		// place your code here
 
 		// pass the request along the filter chain
-		String name=request.getParameter("username");
-		if (name!=null&&!"".equals(name)||"张三".equals(name)) {
-			chain.doFilter(request, response);
-		}else {
-			HttpServletResponse rep=(HttpServletResponse)response;
-			rep.sendRedirect("/PersonWeb/filter/NullUsername.html");
-		}
+		request.setCharacterEncoding(charset);
+		chain.doFilter(request, response);
 	}
 
 	/**
@@ -59,6 +62,7 @@ public class UserNameFilter implements Filter {
 	 */
 	public void init(FilterConfig fConfig) throws ServletException {
 		// TODO Auto-generated method stub
+		this.charset=fConfig.getInitParameter("charset");
 	}
 
 }

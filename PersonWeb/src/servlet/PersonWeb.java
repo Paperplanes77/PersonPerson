@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+
+
 /**
  * Servlet implementation class PersonWeb
  */
@@ -37,14 +39,19 @@ public class PersonWeb extends HttpServlet {
 			name = "未输入";
 		if (pwd == null || pwd == "")
 			pwd = "未输入";
-		if (!name.equals("未输入") && !pwd.equals("未输入")) {//注意，本例如果，用户名和密码就是“为输入”，则也不会设定会话！
-			HttpSession hs = request.getSession();
-			hs.setAttribute("userid", name);
-		}else if ("zhangsan".equals(name)&&"1234".equals(pwd)) {
+		if ("张三".equals(name)&&"1234".equals(pwd)) {//注意，本例如果，用户名和密码就是“为输入”，则也不会设定会话！
 			ServletContext context=getServletContext();
 			RequestDispatcher rd=context.getRequestDispatcher("/login/LoginSuccess.html");
 			rd.forward(request, response);
-		}else{
+			
+		}else if(!name.equals("未输入") && !pwd.equals("未输入")&&!"张三".equals(name)&&!"1234".equals(pwd)){
+			HttpSession hs = request.getSession();
+			hs.setAttribute("userid", name);
+		}else if (name.equals("未输入") && !pwd.equals("未输入")) {
+			System.out.println("不好意思 你怎么不输入账户!");
+		}else if (!name.equals("未输入") &&pwd.equals("未输入")){
+			System.out.println("不好意思 你怎么不输入密码!");
+		} else{
 			/*RequestDispatcher rd=request.getRequestDispatcher("/servlet/MyLoginServletDemo");
 			rd.include(request, response);*/
 			ServletContext context=getServletContext();

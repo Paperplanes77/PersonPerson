@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 				DispatcherType.INCLUDE, 
 				DispatcherType.ERROR
 		}
-					, urlPatterns = { "" })
+					, urlPatterns = { "/servlet/PersonWeb" })
 public class PasswordFilter implements Filter {
 
     /**
@@ -47,13 +47,12 @@ public class PasswordFilter implements Filter {
 		// pass the request along the filter chain
 		System.out.println("loginPasswordLost:分离开始!");
 		String password=request.getParameter("password");
-		if (password!=null&&!"".equals(password)) {
+		if (password!=null&&!"".equals(password)||"1234".equals(password)) {
 			chain.doFilter(request, response);
 		}else {
 			HttpServletResponse rep=(HttpServletResponse)response;
 			rep.sendRedirect("/PersonWeb/filter/NullPassword.html");
 		}
-		chain.doFilter(request, response);
 	}
 
 	/**
