@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 
 
@@ -40,14 +41,21 @@ public class PersonWeb extends HttpServlet {
 		if (pwd == null || pwd == "")
 			pwd = "未输入";
 		if ("张三".equals(name)&&"1234".equals(pwd)) {//注意，本例如果，用户名和密码就是“为输入”，则也不会设定会话！
-			ServletContext context=getServletContext();
-			RequestDispatcher rd=context.getRequestDispatcher("/login/LoginSuccess.html");
-			rd.forward(request, response);
-			
-		}else if(!name.equals("未输入") && !pwd.equals("未输入")&&!"张三".equals(name)&&!"1234".equals(pwd)){
 			HttpSession hs = request.getSession();
 			hs.setAttribute("userid", name);
-		}else if (name.equals("未输入") && !pwd.equals("未输入")) {
+			/*ServletContext context=getServletContext();
+			RequestDispatcher rd=context.getRequestDispatcher("/login/LoginSuccess.html");
+			rd.forward(request, response);*/
+			response.sendRedirect("../listener/list.jsp");
+			
+		}/*else if(!name.equals("未输入") && !pwd.equals("未输入")&&!"张三".equals(name)&&!"1234".equals(pwd)){
+			HttpSession hs = request.getSession();
+			hs.setAttribute("userid", name);
+			String userid=request.getParameter("userid");
+			if(!(userid==null||"".equals(userid))){
+				response.sendRedirect("../listener/list.jsp");
+			}}*/
+		else if (name.equals("未输入") && !pwd.equals("未输入")) {
 			System.out.println("不好意思 你怎么不输入账户!");
 		}else if (!name.equals("未输入") &&pwd.equals("未输入")){
 			System.out.println("不好意思 你怎么不输入密码!");

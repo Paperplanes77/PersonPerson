@@ -10,7 +10,7 @@
 </head>
 <body style="background-image: url('image/bb.jpg');    background-size:100%; background-repeat:no-repeat;">
 	<center>
-		<form action="<%=request.getContextPath() %>/servlet/PersonWeb" method="get" >
+				<form action="<%=request.getContextPath() %>/servlet/PersonWeb" method="get" >
 				<div class="login_putin">
 					<span>账户名:</span>
 					<input type="text" name="username" size="12" title="输入账户名"/><br/>

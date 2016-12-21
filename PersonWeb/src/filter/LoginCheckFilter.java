@@ -23,11 +23,11 @@ import javax.servlet.http.HttpSession;
 				DispatcherType.INCLUDE, 
 				DispatcherType.ERROR
 		}
-					, description = "登录检查过滤", urlPatterns = { "/servlet/Welcome" })
+					, description = "登录检查过滤", urlPatterns = { "/filter/*","/listen/*" })
 public class LoginCheckFilter implements Filter {
 
     /**
-     * Default constructor. 
+     * Default constructor.  
      */
     public LoginCheckFilter() {
         // TODO Auto-generated constructor stub
@@ -47,15 +47,16 @@ public class LoginCheckFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		// TODO Auto-generated method stub
 		// place your code here
-
+		System.out.println("hello world!");
 		// pass the request along the filter chain
 		HttpServletRequest ht=(HttpServletRequest)request;
 		HttpSession hs=ht.getSession();
-		String name=(String)hs.getAttribute("userid");
-		if ("".equals(name)||name==null) {
+		String userid=(String)hs.getAttribute("userid");
+		if ("".equals(userid)||userid==null) {
 			System.out.println("不好意思,你被拦截");
 			HttpServletResponse hsr=(HttpServletResponse)response;
-			hsr.sendRedirect("/PersonWeb/filter/unlogin.jsp");
+			/*hsr.sendRedirect("/PersonWeb/filter/unlogin.jsp");*/
+			hsr.sendRedirect("../LoginTest.jsp");
 		}else{
 			System.out.println("成功了,请放行吧!");
 			chain.doFilter(request, response);
