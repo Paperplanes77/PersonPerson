@@ -23,7 +23,7 @@ import javax.servlet.http.HttpSession;
 				DispatcherType.INCLUDE, 
 				DispatcherType.ERROR
 		}
-					, description = "登录检查过滤", urlPatterns = { "/filter/*","/listen/*" })
+					, description = "登录检查过滤", urlPatterns = { "/html/*","/jsp/*"})
 public class LoginCheckFilter implements Filter {
 
     /**

@@ -8,10 +8,13 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionAttributeListener;
 import javax.servlet.http.HttpSessionBindingEvent;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
+
+import javafx.beans.binding.StringBinding;
 
 /**
  * Application Lifecycle Listener implementation class OnlineUserList
@@ -60,14 +63,15 @@ public class OnlineUserList implements HttpSessionAttributeListener, HttpSession
     public void attributeAdded(HttpSessionBindingEvent paramHttpSessionBindingEvent)  { 
          // TODO Auto-generated method stub
     	Set all=(Set)this.app.getAttribute("online");
+    	String name=null;
     	String uname=(String)paramHttpSessionBindingEvent.getValue();
-    	try {
-			uname=new String(uname.getBytes("ISO-8859-1"),"UTF-8");
+    	/*try {
+			name = new String(uname.getBytes("ISO-8859-1"),"UTF-8");
 		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-    	all.add(uname);
+		}*/
+		all.add(uname);
     	this.app.setAttribute("online",all);
     }
 
