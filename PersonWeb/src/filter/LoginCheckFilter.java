@@ -23,7 +23,7 @@ import javax.servlet.http.HttpSession;
 				DispatcherType.INCLUDE, 
 				DispatcherType.ERROR
 		}
-					, description = "登录检查过滤", urlPatterns = { "/html/*","/jsp/*"})
+					, description = "登录检查过滤", urlPatterns = { "/listener/*","/login/*"})
 public class LoginCheckFilter implements Filter {
 
     /**
@@ -56,9 +56,11 @@ public class LoginCheckFilter implements Filter {
 			System.out.println("不好意思,你被拦截");
 			HttpServletResponse hsr=(HttpServletResponse)response;
 			/*hsr.sendRedirect("/PersonWeb/filter/unlogin.jsp");*/
+			//hsr.sendRedirect("../LoginTest.jsp");
 			hsr.sendRedirect("../LoginTest.jsp");
 		}else{
 			System.out.println("成功了,请放行吧!");
+			//((HttpServletResponse) response).sendRedirect("../listener/list.jsp");
 			chain.doFilter(request, response);
 		}
 	}

@@ -55,7 +55,7 @@ public class EncodingFilter implements Filter {
 		// pass the request along the filter chain
 		request.setCharacterEncoding(charset);
 		response.setCharacterEncoding(charset);
-		chain.doFilter(request, response);
+ 		chain.doFilter(request, response);
 	}
 
 	/**

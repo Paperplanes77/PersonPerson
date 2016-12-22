@@ -36,17 +36,17 @@ public class PersonWeb extends HttpServlet {
 		// TODO Auto-generated method stub
 		String name=request.getParameter("username");
 		String pwd=request.getParameter("password");
-		if (name == null || name == "")
+		/*if (name == null || name == "")
 			name = "未输入";
 		if (pwd == null || pwd == "")
-			pwd = "未输入";
+			pwd = "未输入";*/
 		if ("张三".equals(name)&&"1234".equals(pwd)) {//注意，本例如果，用户名和密码就是“为输入”，则也不会设定会话！
 			HttpSession session=request.getSession();
-			session.setAttribute("userid", name);
-			/*ServletContext context=getServletContext();
+			session.setAttribute("userid",name);
+			ServletContext context=getServletContext();
 			RequestDispatcher rd=context.getRequestDispatcher("/login/LoginSuccess.html");
-			rd.forward(request, response);*/
-			response.sendRedirect("../listener/list.jsp");
+			rd.forward(request, response);
+			//response.sendRedirect("../listener/list.jsp");不能客户端跳转吗？
 			
 		}/*else if(!name.equals("未输入") && !pwd.equals("未输入")&&!"张三".equals(name)&&!"1234".equals(pwd)){
 			HttpSession hs = request.getSession();
