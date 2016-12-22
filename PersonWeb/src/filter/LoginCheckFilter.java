@@ -55,9 +55,12 @@ public class LoginCheckFilter implements Filter {
 		if ("".equals(userid)||userid==null) {
 			System.out.println("不好意思,你被拦截");
 			HttpServletResponse hsr=(HttpServletResponse)response;
-			/*hsr.sendRedirect("/PersonWeb/filter/unlogin.jsp");*/
-			//hsr.sendRedirect("../LoginTest.jsp");
 			hsr.sendRedirect("../LoginTest.jsp");
+			//一种页面跳转
+			//hsr.sendRedirect("../LoginTest.jsp");
+			/*hsr.sendRedirect("/PersonWeb/filter/unlogin.jsp");*/
+			//页面定时跳转
+			/*hsr.setHeader("refresh","4;URL=/login/LoginSuccess.html");*/
 		}else{
 			System.out.println("成功了,请放行吧!");
 			//((HttpServletResponse) response).sendRedirect("../listener/list.jsp");

@@ -44,7 +44,7 @@ public class PersonWeb extends HttpServlet {
 			HttpSession session=request.getSession();
 			session.setAttribute("userid",name);
 			ServletContext context=getServletContext();
-			RequestDispatcher rd=context.getRequestDispatcher("/login/LoginSuccess.html");
+			RequestDispatcher rd=context.getRequestDispatcher("/listener/list.jsp");
 			rd.forward(request, response);
 			//response.sendRedirect("../listener/list.jsp");不能客户端跳转吗？
 			
